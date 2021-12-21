@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.NetworkInformation;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.DataContracts;
@@ -125,6 +128,94 @@ namespace TomLonghurst.ApplicationInsights.TelemetryLogger.UnitTests
                      && x.Duration == TimeSpan.FromSeconds(1)
                      && x.ResultCode == "200"
                      && x.Success == true
+            )));
+        }
+        
+        [Test]
+        public void Exception()
+        {
+            _telemetryLogger.Exceptions.TrackException(new PingException("Blah"));
+            _telemetryChannel.Verify(x => x.Send(It.Is<ExceptionTelemetry>(
+                x => x.Exception.Message == "Blah"
+            )));
+        }
+        
+        [Test]
+        public void Exception2()
+        {
+            _telemetryLogger.Exceptions.TrackException(new PingException("Blah"), new Dictionary<string, string> { ["DummyProperty"] = "Blah" });
+            _telemetryChannel.Verify(x => x.Send(It.Is<ExceptionTelemetry>(
+                x => x.Exception.Message == "Blah"
+                && x.Properties.First().Key == "DummyProperty"
+                && x.Properties.First().Value == "Blah"
+            )));
+        }
+        
+        [Test]
+        public void Exception3()
+        {
+            _telemetryLogger.Exceptions.TrackException(new ExceptionTelemetry(new PingException("Blah")));
+            _telemetryChannel.Verify(x => x.Send(It.Is<ExceptionTelemetry>(
+                x => x.Exception.Message == "Blah"
+            )));
+        }
+        
+        [Test]
+        public void Trace()
+        {
+            _telemetryLogger.Traces.TrackTrace("DummyMessage");
+            _telemetryChannel.Verify(x => x.Send(It.Is<TraceTelemetry>(
+                x => x.Message == "DummyMessage"
+            )));
+        }
+        
+        [TestCase(SeverityLevel.Critical)]
+        [TestCase(SeverityLevel.Information)]
+        [TestCase(SeverityLevel.Warning)]
+        [TestCase(SeverityLevel.Error)]
+        [TestCase(SeverityLevel.Verbose)]
+        public void Trace2(SeverityLevel severityLevel)
+        {
+            _telemetryLogger.Traces.TrackTrace("DummyMessage", severityLevel);
+            _telemetryChannel.Verify(x => x.Send(It.Is<TraceTelemetry>(
+                x => x.Message == "DummyMessage"
+                && x.SeverityLevel == severityLevel
+            )));
+        }
+
+        [Test]
+        public void Metric()
+        {
+            var metricName = "MyMetric-" + Guid.NewGuid().ToString("N");
+            _telemetryLogger.Metrics.TrackMetric(new MetricTelemetry(metricName, 5));
+            _telemetryLogger.Metrics.Flush();
+            _telemetryChannel.Verify(x => x.Send(It.Is<MetricTelemetry>(
+                x => x.Name == metricName
+                     && (int) x.Sum == 5
+            )));
+        }
+        
+        [Test]
+        public void Metric2()
+        {
+            var metricName = "MyMetric-" + Guid.NewGuid().ToString("N");
+            _telemetryLogger.Metrics.TrackMetric(metricName, 5);
+            _telemetryLogger.Metrics.Flush();
+            _telemetryChannel.Verify(x => x.Send(It.Is<MetricTelemetry>(
+                x => x.Name == metricName
+                     && (int) x.Sum == 5
+            )));
+        }
+        
+        [Test]
+        public void Metric3()
+        {
+            var metricName = "MyMetric-" + Guid.NewGuid().ToString("N");
+            _telemetryLogger.Metrics.GetMetric(metricName).TrackValue(5);
+            _telemetryLogger.Metrics.Flush();
+            _telemetryChannel.Verify(x => x.Send(It.Is<MetricTelemetry>(
+                x => x.Name == metricName
+                     && (int) x.Sum == 5
             )));
         }
     }
