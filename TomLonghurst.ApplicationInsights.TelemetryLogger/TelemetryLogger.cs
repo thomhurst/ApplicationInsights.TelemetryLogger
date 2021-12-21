@@ -8,8 +8,6 @@ namespace TomLonghurst.ApplicationInsights.TelemetryLogger;
 
 public class TelemetryLogger : ITelemetryLogger
 {
-    public TelemetryClient TelemetryClient { get; }
-
     public TelemetryLogger(TelemetryClient telemetryClient, 
         ITelemetryEventLogger events, 
         ITelemetryRequestLogger requests, 
@@ -30,6 +28,8 @@ public class TelemetryLogger : ITelemetryLogger
         Availability = availability;
         PageViews = pageViews;
     }
+
+    public TelemetryClient TelemetryClient { get; }
 
     public ITelemetryEventLogger Events { get; }
 
@@ -56,6 +56,6 @@ public class TelemetryLogger : ITelemetryLogger
     {
         return TelemetryClient.FlushAsync(cancellationToken);
     }
-    
+
     public TelemetryContext Context => TelemetryClient.Context;
 }
