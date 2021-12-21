@@ -1,15 +1,12 @@
-﻿using Microsoft.ApplicationInsights;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+﻿using Microsoft.Extensions.DependencyInjection;
 using TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
 namespace TomLonghurst.ApplicationInsights.TelemetryLogger.Extensions;
 
 public static class DependencyInjectionExtensions
 {
-    public static IServiceCollection AddApplicationInsightsTelemetryLogger(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddApplicationInsightsTelemetryClientInterfaces(this IServiceCollection serviceCollection)
     {
-        serviceCollection.TryAddSingleton<TelemetryClient>();
         return serviceCollection.AddSingleton<ITelemetryLogger, TelemetryLogger>()
             .AddSingleton<ITelemetryClient, TelemetryClientWrapper>()
             .AddSingleton<ITelemetryEventLogger, TelemetryEventLogger>()

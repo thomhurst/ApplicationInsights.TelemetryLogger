@@ -28,7 +28,7 @@ namespace TomLonghurst.ApplicationInsights.TelemetryLogger.UnitTests
             _telemetryLogger = ActivatorUtilities.CreateInstance<TelemetryLogger>(
                 new ServiceCollection()
                     .AddSingleton(_telemetryClient)
-                    .AddApplicationInsightsTelemetryLogger()
+                    .AddApplicationInsightsTelemetryClientInterfaces()
                     .BuildServiceProvider()
             );
         }
