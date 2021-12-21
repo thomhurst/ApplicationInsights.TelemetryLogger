@@ -6,7 +6,7 @@ An interface alternative TelemetryClient to facilitate testing via dependency in
 [![CodeFactor](https://www.codefactor.io/repository/github/thomhurst/applicationinsights.telemetrylogger/badge)](https://www.codefactor.io/repository/github/thomhurst/applicationinsights.telemetrylogger)
 <!-- ![Nuget](https://img.shields.io/nuget/dt/TomLonghurst.ApplicationInsights.TelemetryLogger) -->
 
-### Support
+## Support
 
 If this library helped you, consider buying me a coffee :)
 
@@ -70,7 +70,7 @@ public class MyClass
 }
 ```
 
-### Specific ITelemetry[Type]Logger
+### Specific ITelemetryTypeLogger
 Just inject the type you care about.
 
 ```csharp
