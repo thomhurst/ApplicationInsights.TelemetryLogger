@@ -1,6 +1,21 @@
 # ApplicationInsights.TelemetryLogger
 An interface alternative TelemetryClient to facilitate testing via dependency inversion
 
+[![nuget](https://img.shields.io/nuget/v/TomLonghurst.ApplicationInsights.TelemetryLogger.svg)](https://www.nuget.org/packages/TomLonghurst.ApplicationInsights.TelemetryLogger/)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/dbc34cf88c61441caa960579e1fd61ab)](https://www.codacy.com/gh/thomhurst/ApplicationInsights.TelemetryLogger/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=thomhurst/ApplicationInsights.TelemetryLogger&amp;utm_campaign=Badge_Grade)
+[![CodeFactor](https://www.codefactor.io/repository/github/thomhurst/applicationinsights.telemetrylogger/badge)](https://www.codefactor.io/repository/github/thomhurst/applicationinsights.telemetrylogger)
+<!-- ![Nuget](https://img.shields.io/nuget/dt/TomLonghurst.ApplicationInsights.TelemetryLogger) -->
+
+### Support
+
+If you like using BDTest, consider buying me a coffee :)
+
+<a href="https://www.buymeacoffee.com/tomhurst" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+
+## Installation
+Install via Nuget
+`Install-Package TomLonghurst.ApplicationInsights.TelemetryLogger`
+
 ## Usage
 ### Dependency Injection
 
@@ -55,7 +70,7 @@ public class MyClass
 }
 ```
 
-### Only care about a certain type of Telemetry?
+### Specific ITelemetry[Type]Logger
 Just inject the type you care about.
 
 ```csharp
