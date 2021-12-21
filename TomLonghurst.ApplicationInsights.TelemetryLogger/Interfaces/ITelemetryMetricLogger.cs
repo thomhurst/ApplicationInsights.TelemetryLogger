@@ -5,7 +5,7 @@ using Microsoft.ApplicationInsights.Metrics;
 
 namespace TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
-public interface ITelemetryMetricLogger : IFlushableTelemetryLogger
+public interface ITelemetryMetricLogger : IFlushableTelemetryLogger, ITelemetryContextLogger
 {
     void TrackMetric(string name, double value, IDictionary<string, string>? properties = null);
     void TrackMetric(MetricTelemetry telemetry);

@@ -2,7 +2,7 @@
 
 namespace TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
-public interface ITelemetryPageViewLogger : IFlushableTelemetryLogger
+public interface ITelemetryPageViewLogger : IFlushableTelemetryLogger, ITelemetryContextLogger
 {
     void TrackPageView(string name);
     void TrackPageView(PageViewTelemetry telemetry);

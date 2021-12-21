@@ -3,7 +3,7 @@ using Microsoft.ApplicationInsights.DataContracts;
 
 namespace TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
-public interface ITelemetryTraceLogger : IFlushableTelemetryLogger
+public interface ITelemetryTraceLogger : IFlushableTelemetryLogger, ITelemetryContextLogger
 {
     void TrackTrace(string message);
     void TrackTrace(string message, SeverityLevel severityLevel);

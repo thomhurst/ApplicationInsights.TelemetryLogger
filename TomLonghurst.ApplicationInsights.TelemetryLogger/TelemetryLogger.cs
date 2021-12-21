@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
 using TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
 namespace TomLonghurst.ApplicationInsights.TelemetryLogger;
@@ -55,4 +56,6 @@ public class TelemetryLogger : ITelemetryLogger
     {
         return TelemetryClient.FlushAsync(cancellationToken);
     }
+    
+    public TelemetryContext Context => TelemetryClient.Context;
 }

@@ -34,4 +34,6 @@ public class TelemetryPageViewLogger : ITelemetryPageViewLogger
     {
         return TelemetryClient.FlushAsync(cancellationToken);
     }
+    
+    public TelemetryContext Context => TelemetryClient.Context;
 }

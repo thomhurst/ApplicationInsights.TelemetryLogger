@@ -37,4 +37,6 @@ public class TelemetryAvailabilityLogger : ITelemetryAvailabilityLogger
     {
         return TelemetryClient.FlushAsync(cancellationToken);
     }
+
+    public TelemetryContext Context => TelemetryClient.Context;
 }

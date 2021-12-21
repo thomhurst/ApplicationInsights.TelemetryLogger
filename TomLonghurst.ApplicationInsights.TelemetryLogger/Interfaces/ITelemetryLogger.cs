@@ -1,6 +1,6 @@
 ﻿namespace TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
-public interface ITelemetryLogger : IFlushableTelemetryLogger
+public interface ITelemetryLogger : IFlushableTelemetryLogger, ITelemetryContextLogger
 {
     ITelemetryEventLogger Events { get; }
     ITelemetryRequestLogger Requests { get; }

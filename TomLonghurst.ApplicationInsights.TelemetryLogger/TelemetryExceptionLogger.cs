@@ -36,4 +36,6 @@ public class TelemetryExceptionLogger : ITelemetryExceptionLogger
     {
         return TelemetryClient.FlushAsync(cancellationToken);
     }
+    
+    public TelemetryContext Context => TelemetryClient.Context;
 }

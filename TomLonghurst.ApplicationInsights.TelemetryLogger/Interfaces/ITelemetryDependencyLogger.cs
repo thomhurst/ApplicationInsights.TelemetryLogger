@@ -3,7 +3,7 @@ using Microsoft.ApplicationInsights.DataContracts;
 
 namespace TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
-public interface ITelemetryDependencyLogger : IFlushableTelemetryLogger
+public interface ITelemetryDependencyLogger : IFlushableTelemetryLogger, ITelemetryContextLogger
 {
     void TrackDependency(DependencyTelemetry telemetry);
 

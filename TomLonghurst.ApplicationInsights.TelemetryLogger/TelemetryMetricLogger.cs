@@ -135,4 +135,6 @@ public class TelemetryMetricLogger : ITelemetryMetricLogger
     {
         return TelemetryClient.FlushAsync(cancellationToken);
     }
+    
+    public TelemetryContext Context => TelemetryClient.Context;
 }
