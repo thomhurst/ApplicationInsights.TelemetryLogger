@@ -85,3 +85,5 @@ public class MyClass
     }
 }
 ```
+
+Now Unit Test to your heart's content!
