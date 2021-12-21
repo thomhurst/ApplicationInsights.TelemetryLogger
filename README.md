@@ -4,14 +4,14 @@ An interface alternative TelemetryClient to facilitate testing via dependency in
 ## Usage
 ### Dependency Injection
 
-Call `AddApplicationInsightsTelemetry()` as normal, and then call `AddApplicationInsightsTelemetryLogger()`
+Call `AddApplicationInsightsTelemetry()` as normal, and then call `AddApplicationInsightsTelemetryClientInterfaces()`
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
     {
         services
             .AddApplicationInsightsTelemetry()
-            .AddApplicationInsightsTelemetryLogger();
+            .AddApplicationInsightsTelemetryClientInterfaces();
     }
 ```
 
