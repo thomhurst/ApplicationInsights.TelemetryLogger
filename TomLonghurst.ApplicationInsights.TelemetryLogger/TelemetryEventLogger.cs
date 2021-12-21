@@ -1,4 +1,3 @@
-﻿using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -6,27 +5,27 @@ using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
-namespace TomLonghurst.ApplicationInsights.TelemetryLogger.Implementations;
+namespace TomLonghurst.ApplicationInsights.TelemetryLogger;
 
-public class TelemetryExceptionLogger : ITelemetryExceptionLogger
+public class TelemetryEventLogger : ITelemetryEventLogger
 {
     public TelemetryClient TelemetryClient { get; }
 
-    public TelemetryExceptionLogger(TelemetryClient telemetryClient)
+    public TelemetryEventLogger(TelemetryClient telemetryClient)
     {
         TelemetryClient = telemetryClient;
     }
 
-    public void TrackException(Exception exception, IDictionary<string, string>? properties = null, IDictionary<string, double>? metrics = null)
+    public void TrackEvent(string eventName, IDictionary<string, string>? properties = null, IDictionary<string, double>? metrics = null)
     {
-        TelemetryClient.TrackException(exception, properties, metrics);
+        TelemetryClient.TrackEvent(eventName, properties, metrics);
     }
 
-    public void TrackException(ExceptionTelemetry telemetry)
+    public void TrackEvent(EventTelemetry telemetry)
     {
-        TelemetryClient.TrackException(telemetry);
+        TelemetryClient.TrackEvent(telemetry);
     }
-    
+
     public void Flush()
     {
         TelemetryClient.Flush();

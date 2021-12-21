@@ -6,7 +6,7 @@ using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Metrics;
 using TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
-namespace TomLonghurst.ApplicationInsights.TelemetryLogger.Implementations;
+namespace TomLonghurst.ApplicationInsights.TelemetryLogger;
 
 public class TelemetryMetricLogger : ITelemetryMetricLogger
 {

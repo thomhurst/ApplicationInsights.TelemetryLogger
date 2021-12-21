@@ -5,7 +5,7 @@ using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
-namespace TomLonghurst.ApplicationInsights.TelemetryLogger.Implementations;
+namespace TomLonghurst.ApplicationInsights.TelemetryLogger;
 
 public class TelemetryTraceLogger : ITelemetryTraceLogger
 {
