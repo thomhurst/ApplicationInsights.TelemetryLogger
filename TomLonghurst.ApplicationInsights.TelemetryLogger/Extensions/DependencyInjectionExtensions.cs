@@ -11,6 +11,7 @@ public static class DependencyInjectionExtensions
     {
         serviceCollection.TryAddSingleton<TelemetryClient>();
         return serviceCollection.AddSingleton<ITelemetryLogger, TelemetryLogger>()
+            .AddSingleton<ITelemetryClient, TelemetryClientWrapper>()
             .AddSingleton<ITelemetryEventLogger, TelemetryEventLogger>()
             .AddSingleton<ITelemetryRequestLogger, TelemetryRequestLogger>()
             .AddSingleton<ITelemetryTraceLogger, TelemetryTraceLogger>()
