@@ -17,17 +17,17 @@ namespace TomLonghurst.ApplicationInsights.TelemetryLogger.UnitTests
     {
         private TelemetryLogger _telemetryLogger;
         private Mock<ITelemetryChannel> _telemetryChannel;
-        private TelemetryClient _telemetryClient;
 
         [SetUp]
         public void Setup()
         {
             _telemetryChannel = new Mock<ITelemetryChannel>();
-            _telemetryClient = new TelemetryClient(new TelemetryConfiguration(string.Empty, _telemetryChannel.Object));
+            
+            var telemetryClient = new TelemetryClient(new TelemetryConfiguration(string.Empty, _telemetryChannel.Object));
             
             _telemetryLogger = ActivatorUtilities.CreateInstance<TelemetryLogger>(
                 new ServiceCollection()
-                    .AddSingleton(_telemetryClient)
+                    .AddSingleton(telemetryClient)
                     .AddApplicationInsightsTelemetryClientInterfaces()
                     .BuildServiceProvider()
             );
