@@ -9,7 +9,12 @@ namespace TomLonghurst.ApplicationInsights.TelemetryLogger;
 public class TelemetryClientWrapper : ITelemetryClient
 {
     private readonly TelemetryClient _telemetryClient;
-    
+
+    public TelemetryClientWrapper(TelemetryClient telemetryClient)
+    {
+        _telemetryClient = telemetryClient;
+    }
+
     public bool IsEnabled()
     {
         return _telemetryClient.IsEnabled();
@@ -68,11 +73,6 @@ public class TelemetryClientWrapper : ITelemetryClient
     public void TrackException(ExceptionTelemetry telemetry)
     {
         _telemetryClient.TrackException(telemetry);
-    }
-
-    public void TrackDependency(string dependencyName, string data, DateTimeOffset startTime, TimeSpan duration, bool success)
-    {
-        _telemetryClient.TrackDependency(dependencyName, data, startTime, duration, success);
     }
 
     public void TrackDependency(string dependencyTypeName, string dependencyName, string data, DateTimeOffset startTime,
@@ -241,9 +241,4 @@ public class TelemetryClientWrapper : ITelemetryClient
     }
 
     public TelemetryConfiguration TelemetryConfiguration => _telemetryClient.TelemetryConfiguration;
-
-    public TelemetryClientWrapper(TelemetryClient telemetryClient)
-    {
-        _telemetryClient = telemetryClient;
-    }
 }
