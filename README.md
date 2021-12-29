@@ -101,4 +101,46 @@ public class MyClass
 }
 ```
 
+### Extension Methods
+Extension methods should be registered to the specific `ITelemetryTypeLogger` interface. This is because the broader interface (`ITelemetryClient`) implements these specific interfaces. So this makes it available on any of the logger types that you inject.
+
+```csharp
+    public static class TelemetryExtensions
+    {
+        public static void LogSomethingHappenedTrace(this ITelemetryTraceLogger traceLogger)
+        {
+            traceLogger.TrackTrace("Something happened");
+        }
+    }
+
+    public class MyClass
+    {
+        private readonly ITelemetryClient _telemetryClient;
+        private readonly ITelemetryLogger _telemetryLogger;
+        private readonly ITelemetryTraceLogger _traceLogger;
+
+        public MyClass(ITelemetryClient telemetryClient, ITelemetryLogger telemetryLogger, ITelemetryTraceLogger traceLogger)
+        {
+            _telemetryClient = telemetryClient;
+            _telemetryLogger = telemetryLogger;
+            _traceLogger = traceLogger;
+        }
+        
+        public void TelemetryClientExtension()
+        {
+            _telemetryClient.LogSomethingHappenedTrace();
+        }
+        
+        public void TelemetryLoggerExtension()
+        {
+            _telemetryLogger.Traces.LogSomethingHappenedTrace();
+        }
+        
+        public void TraceLoggerExtension()
+        {
+            _traceLogger.LogSomethingHappenedTrace();
+        }
+    }
+```
+
 Now Unit Test to your heart's content!
