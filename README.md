@@ -103,14 +103,23 @@ public class MyClass
 
 ### Custom Combined Specific Loggers
 Maybe you care about tracking Events and Exceptions in your code, but nothing else.
-Well, create a class, and add the interfaces for the types you care about. E.g. `ITelemetryEventLogger` and `ITelemetryExceptionLogger`
+Well, create a new interface (so you can add this to your Dependency Injection), and add to it the interfaces for the types you care about. E.g. `ITelemetryEventLogger` and `ITelemetryExceptionLogger`
 
-Then inject those same interfaces into your class. Then delegate all of the required methods to those new fields.
+Example: 
+
+```csharp
+ public interface IEventAndExceptionTelemetryLogger : ITelemetryEventLogger, ITelemetryExceptionLogger
+    {
+    }
+```
+
+Now create a new class, make it implement your custom interface, and then inject the built-in interfaces you added to your custom interface.
+Then delegate all of the required methods to those new fields.
 
 Example:
 
 ```csharp
-public class CustomEventAndExceptionTelemetryLogger : ITelemetryEventLogger, ITelemetryExceptionLogger
+public class CustomEventAndExceptionTelemetryLogger : IEventAndExceptionTelemetryLogger
     {
         private readonly ITelemetryEventLogger _telemetryEventLoggerImplementation;
         private readonly ITelemetryExceptionLogger _telemetryExceptionLoggerImplementation;
