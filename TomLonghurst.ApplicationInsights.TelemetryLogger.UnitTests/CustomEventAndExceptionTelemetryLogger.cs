@@ -7,7 +7,7 @@ using TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
 namespace TomLonghurst.ApplicationInsights.TelemetryLogger.UnitTests
 {
-    public class CustomEventAndExceptionTelemetryLogger : ITelemetryEventLogger, ITelemetryExceptionLogger
+    public class CustomEventAndExceptionTelemetryLogger : IEventAndExceptionTelemetryLogger
     {
         private readonly ITelemetryEventLogger _telemetryEventLoggerImplementation;
         private readonly ITelemetryExceptionLogger _telemetryExceptionLoggerImplementation;
@@ -49,5 +49,9 @@ namespace TomLonghurst.ApplicationInsights.TelemetryLogger.UnitTests
         {
             _telemetryExceptionLoggerImplementation.TrackException(telemetry);
         }
+    }
+
+    public interface IEventAndExceptionTelemetryLogger : ITelemetryEventLogger, ITelemetryExceptionLogger
+    {
     }
 }
