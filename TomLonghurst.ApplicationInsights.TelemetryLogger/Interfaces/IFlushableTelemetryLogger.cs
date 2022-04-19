@@ -1,7 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-
-namespace TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
+﻿namespace TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
 public interface IFlushableTelemetryLogger
 {

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.ApplicationInsights;
+﻿using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Metrics;
 
@@ -10,65 +9,65 @@ public interface ITelemetryMetricLogger : IFlushableTelemetryLogger, ITelemetryC
     void TrackMetric(string name, double value, IDictionary<string, string>? properties = null);
     void TrackMetric(MetricTelemetry telemetry);
     
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         MetricConfiguration metricConfiguration);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         MetricConfiguration metricConfiguration,
         MetricAggregationScope aggregationScope);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         string dimension1Name);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         string dimension1Name,
         MetricConfiguration metricConfiguration);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         string dimension1Name,
         MetricConfiguration metricConfiguration,
         MetricAggregationScope aggregationScope);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         string dimension1Name,
         string dimension2Name);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         string dimension1Name,
         string dimension2Name,
         MetricConfiguration metricConfiguration);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         string dimension1Name,
         string dimension2Name,
         MetricConfiguration metricConfiguration,
         MetricAggregationScope aggregationScope);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         string dimension1Name,
         string dimension2Name,
         string dimension3Name);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         string dimension1Name,
         string dimension2Name,
         string dimension3Name,
         MetricConfiguration metricConfiguration);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         string dimension1Name,
         string dimension2Name,
@@ -76,14 +75,14 @@ public interface ITelemetryMetricLogger : IFlushableTelemetryLogger, ITelemetryC
         MetricConfiguration metricConfiguration,
         MetricAggregationScope aggregationScope);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         string dimension1Name,
         string dimension2Name,
         string dimension3Name,
         string dimension4Name);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         string dimension1Name,
         string dimension2Name,
@@ -91,7 +90,7 @@ public interface ITelemetryMetricLogger : IFlushableTelemetryLogger, ITelemetryC
         string dimension4Name,
         MetricConfiguration metricConfiguration);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         string metricId,
         string dimension1Name,
         string dimension2Name,
@@ -100,14 +99,14 @@ public interface ITelemetryMetricLogger : IFlushableTelemetryLogger, ITelemetryC
         MetricConfiguration metricConfiguration,
         MetricAggregationScope aggregationScope);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         MetricIdentifier metricIdentifier);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         MetricIdentifier metricIdentifier,
         MetricConfiguration metricConfiguration);
 
-    Metric GetMetric(
+    IMetric GetMetric(
         MetricIdentifier metricIdentifier,
         MetricConfiguration metricConfiguration,
         MetricAggregationScope aggregationScope);

@@ -2,6 +2,7 @@ using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Metrics;
+using TomLonghurst.ApplicationInsights.TelemetryLogger.Extensions;
 using TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
 namespace TomLonghurst.ApplicationInsights.TelemetryLogger;
@@ -133,103 +134,103 @@ public class TelemetryClientWrapper : ITelemetryClient
         return _telemetryClient.FlushAsync(cancellationToken);
     }
 
-    public Metric GetMetric(string metricId)
+    public IMetric GetMetric(string metricId)
     {
-        return _telemetryClient.GetMetric(metricId);
+        return _telemetryClient.GetMetric(metricId).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, MetricConfiguration metricConfiguration)
+    public IMetric GetMetric(string metricId, MetricConfiguration metricConfiguration)
     {
-        return _telemetryClient.GetMetric(metricId, metricConfiguration);
+        return _telemetryClient.GetMetric(metricId, metricConfiguration).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, MetricConfiguration metricConfiguration, MetricAggregationScope aggregationScope)
+    public IMetric GetMetric(string metricId, MetricConfiguration metricConfiguration, MetricAggregationScope aggregationScope)
     {
-        return _telemetryClient.GetMetric(metricId, metricConfiguration, aggregationScope);
+        return _telemetryClient.GetMetric(metricId, metricConfiguration, aggregationScope).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, string dimension1Name)
+    public IMetric GetMetric(string metricId, string dimension1Name)
     {
-        return _telemetryClient.GetMetric(metricId, dimension1Name);
+        return _telemetryClient.GetMetric(metricId, dimension1Name).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, string dimension1Name, MetricConfiguration metricConfiguration)
+    public IMetric GetMetric(string metricId, string dimension1Name, MetricConfiguration metricConfiguration)
     {
-        return _telemetryClient.GetMetric(metricId, dimension1Name, metricConfiguration);
+        return _telemetryClient.GetMetric(metricId, dimension1Name, metricConfiguration).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, string dimension1Name, MetricConfiguration metricConfiguration,
+    public IMetric GetMetric(string metricId, string dimension1Name, MetricConfiguration metricConfiguration,
         MetricAggregationScope aggregationScope)
     {
-        return _telemetryClient.GetMetric(metricId, dimension1Name, metricConfiguration, aggregationScope);
+        return _telemetryClient.GetMetric(metricId, dimension1Name, metricConfiguration, aggregationScope).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, string dimension1Name, string dimension2Name)
+    public IMetric GetMetric(string metricId, string dimension1Name, string dimension2Name)
     {
-        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name);
+        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, string dimension1Name, string dimension2Name,
+    public IMetric GetMetric(string metricId, string dimension1Name, string dimension2Name,
         MetricConfiguration metricConfiguration)
     {
-        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, metricConfiguration);
+        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, metricConfiguration).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, string dimension1Name, string dimension2Name, MetricConfiguration metricConfiguration,
+    public IMetric GetMetric(string metricId, string dimension1Name, string dimension2Name, MetricConfiguration metricConfiguration,
         MetricAggregationScope aggregationScope)
     {
-        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, metricConfiguration, aggregationScope);
+        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, metricConfiguration, aggregationScope).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, string dimension1Name, string dimension2Name, string dimension3Name)
+    public IMetric GetMetric(string metricId, string dimension1Name, string dimension2Name, string dimension3Name)
     {
-        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, dimension3Name);
+        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, dimension3Name).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, string dimension1Name, string dimension2Name, string dimension3Name,
+    public IMetric GetMetric(string metricId, string dimension1Name, string dimension2Name, string dimension3Name,
         MetricConfiguration metricConfiguration)
     {
-        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, dimension3Name, metricConfiguration);
+        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, dimension3Name, metricConfiguration).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, string dimension1Name, string dimension2Name, string dimension3Name,
+    public IMetric GetMetric(string metricId, string dimension1Name, string dimension2Name, string dimension3Name,
         MetricConfiguration metricConfiguration, MetricAggregationScope aggregationScope)
     {
-        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, dimension3Name, metricConfiguration, aggregationScope);
+        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, dimension3Name, metricConfiguration, aggregationScope).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, string dimension1Name, string dimension2Name, string dimension3Name,
+    public IMetric GetMetric(string metricId, string dimension1Name, string dimension2Name, string dimension3Name,
         string dimension4Name)
     {
-        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, dimension3Name, dimension4Name);
+        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, dimension3Name, dimension4Name).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, string dimension1Name, string dimension2Name, string dimension3Name,
+    public IMetric GetMetric(string metricId, string dimension1Name, string dimension2Name, string dimension3Name,
         string dimension4Name, MetricConfiguration metricConfiguration)
     {
-        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, dimension3Name, dimension4Name, metricConfiguration);
+        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, dimension3Name, dimension4Name, metricConfiguration).WrapMetric();
     }
 
-    public Metric GetMetric(string metricId, string dimension1Name, string dimension2Name, string dimension3Name,
+    public IMetric GetMetric(string metricId, string dimension1Name, string dimension2Name, string dimension3Name,
         string dimension4Name, MetricConfiguration metricConfiguration, MetricAggregationScope aggregationScope)
     {
-        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, dimension3Name, dimension4Name, metricConfiguration, aggregationScope);
+        return _telemetryClient.GetMetric(metricId, dimension1Name, dimension2Name, dimension3Name, dimension4Name, metricConfiguration, aggregationScope).WrapMetric();
     }
 
-    public Metric GetMetric(MetricIdentifier metricIdentifier)
+    public IMetric GetMetric(MetricIdentifier metricIdentifier)
     {
-        return _telemetryClient.GetMetric(metricIdentifier);
+        return _telemetryClient.GetMetric(metricIdentifier).WrapMetric();
     }
 
-    public Metric GetMetric(MetricIdentifier metricIdentifier, MetricConfiguration metricConfiguration)
+    public IMetric GetMetric(MetricIdentifier metricIdentifier, MetricConfiguration metricConfiguration)
     {
-        return _telemetryClient.GetMetric(metricIdentifier, metricConfiguration);
+        return _telemetryClient.GetMetric(metricIdentifier, metricConfiguration).WrapMetric();
     }
 
-    public Metric GetMetric(MetricIdentifier metricIdentifier, MetricConfiguration metricConfiguration,
+    public IMetric GetMetric(MetricIdentifier metricIdentifier, MetricConfiguration metricConfiguration,
         MetricAggregationScope aggregationScope)
     {
-        return _telemetryClient.GetMetric(metricIdentifier, metricConfiguration, aggregationScope);
+        return _telemetryClient.GetMetric(metricIdentifier, metricConfiguration, aggregationScope).WrapMetric();
     }
 
     public TelemetryContext Context => _telemetryClient.Context;

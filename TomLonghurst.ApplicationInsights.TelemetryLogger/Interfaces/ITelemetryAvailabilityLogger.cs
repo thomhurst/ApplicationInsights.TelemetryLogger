@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.ApplicationInsights.DataContracts;
+﻿using Microsoft.ApplicationInsights.DataContracts;
 
 namespace TomLonghurst.ApplicationInsights.TelemetryLogger.Interfaces;
 
